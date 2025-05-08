@@ -1,8 +1,16 @@
 # Hypermart Checkout System
 
+### Very responsive UI even works in mobile device
+
+## Tech Stack
+
+- React
+- Tailwind
+- CSS
+
 ## Assumptions
 
-- There are always 3 checkout counters (but this can be changed by modifying the `numberOfCounters` value in `App.jsx`).
+- Number of checkout counters can be initialised in config.jsx (current value is 3).
 - Customers add a certain number of items to the queue.
 - Invalid inputs (like 0 or non-numeric values) are ignored.
 - Each counter has its own queue, and the counter with the fewest total items is selected.

@@ -2,9 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import Counter from "./Components/Counter";
 
+import { numberOfCounters } from "../config";
+
 function App() {
-  const [newItems, setNewItems] = useState(0);
-  const numberOfCounters = 3;
+  const [newItems, setNewItems] = useState("");
 
   const [counters, setCounters] = useState(
     Array(numberOfCounters)
@@ -48,11 +49,11 @@ function App() {
     <>
       <h1>Hypermart Checkout System</h1>
       <p className="m-5">Real-time queue management system</p>
-      <div className="m-5 flex flex-row gap-5 justify-center">
+      <div className="m-5 flex flex-wrap gap-5 justify-center mb-10">
         <input
           type="text"
           placeholder="Enter number of items"
-          className="p-1 max-w-96 bg-white rounded-sm active:border-none text-sm"
+          className="p-1 min-h-8 min-w-72 max-w-96 bg-white rounded-sm active:border-none text-sm"
           value={newItems}
           onChange={(e) => {
             setNewItems(e.target.value);
@@ -60,19 +61,22 @@ function App() {
           }}
         />
         <button
+          className="max-h-8 px-4"
           onClick={() => {
             updateCounter(newItems);
             setNewItems("");
           }}
         >
-          Chekout items
+          Checkout items
         </button>
       </div>
 
-      <div className="flex flex-row justify-around gap-10">
-        {counters.map((e, i) => (
-          <Counter key={i} number={i + 1} counter-item={counters[i]} />
-        ))}
+      <div className="flex justify-center w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 ">
+          {counters.map((e, i) => (
+            <Counter key={i} number={i + 1} counter-item={counters[i]} />
+          ))}
+        </div>
       </div>
     </>
   );

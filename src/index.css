@@ -39,12 +39,12 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.1em 0.8em;
+
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #5243f8;
-  color:white;
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
 }
