@@ -1,12 +1,34 @@
-# React + Vite
+Assumptions
+There are always 3 checkout counters(But can be changed by changing value of numberOfCounters in App.jsx).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Customers add a certain number of items to the queue.
 
-Currently, two official plugins are available:
+Invalid inputs (like 0 or non-numeric values) are ignored.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Each counter has its own queue, and we select the one with the least items.
 
-## Expanding the ESLint configuration
+How It Works
+When a customer enters the number of items, the system checks if the input is valid.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The counter with the fewest total items is selected by findMinSum which iterates Counter sums stored in seperate array at corresponding index as sum of that counter.
+
+The counter is updated with the new items and the UI reflects the changes.
+
+Time Complexity
+The function to find the counter with the least items takes O(n), where n is the number of counters (3 in this case).
+
+Updating a counter takes O(m), where m is the number of items in that counter.
+
+Overall Time complexity is O(n+m) where n is number of counters and m is number of elements in counter
+
+The time complexity is fairly constant due to the small size of the counters.
+
+How to Run:
+
+git clone https://github.com/Amit-exe/assignment.git
+
+cd assignment
+
+npm install
+
+npm run dev

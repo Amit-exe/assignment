@@ -11,6 +11,11 @@ function App() {
       .fill()
       .map(() => [])
   );
+
+  const [counterSums, setCounterSums] = useState(
+    Array(numberOfCounters).fill(0)
+  );
+
   const updateCounter = (items) => {
     const itemCount = Number(items);
     if (isNaN(itemCount) || itemCount <= 0) return;
@@ -19,18 +24,23 @@ function App() {
     let updated = [...counters];
     updated[minIndex] = [...updated[minIndex], itemCount];
     setCounters(updated);
+
+    let updatedSums = [...counterSums];
+    updatedSums[minIndex] += itemCount;
+    setCounterSums(updatedSums);
   };
 
-  function findMinSum(counters) {
-    let minSum = Infinity;
+  function findMinSum() {
     let minIndex = 0;
-    for (let i = 0; i < counters.length; i++) {
-      let sum = counters[i].reduce((a, b) => Number(a) + Number(b), 0);
-      if (sum < minSum) {
-        minSum = sum;
+    let minSum = counterSums[0];
+
+    for (let i = 1; i < counterSums.length; i++) {
+      if (counterSums[i] < minSum) {
+        minSum = counterSums[i];
         minIndex = i;
       }
     }
+
     return minIndex;
   }
 
@@ -52,6 +62,7 @@ function App() {
         <button
           onClick={() => {
             updateCounter(newItems);
+            setNewItems("");
           }}
         >
           Chekout items
