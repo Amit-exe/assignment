@@ -2,6 +2,8 @@
 
 ### Very responsive UI even works in mobile device
 
+### Try Via live link - https://amit-exe.github.io/assignment/
+
 ## Tech Stack
 
 - React
